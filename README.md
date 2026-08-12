@@ -225,4 +225,24 @@ The implementation combines:
 
 to demonstrate real-time task processing and latency comparison between fog and cloud layers.
 
+## 📜 License
 
+### Source Code
+
+The original source code and implementation files in this repository
+are licensed under the MIT License.
+
+### Published Research
+
+The published research article:
+
+**Hardware-Based Efficient Task Offloading in IoT-Fog-Cloud**
+
+is licensed under **CC BY-NC-ND 4.0** by the authors.
+
+The research article is available through its DOI:
+
+https://doi.org/10.46610/JIBDSN.2026.v03i02.003
+
+The research article, publication certificate, and other third-party
+materials are not covered by the MIT License.
