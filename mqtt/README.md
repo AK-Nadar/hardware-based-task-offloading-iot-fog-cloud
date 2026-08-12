@@ -5,6 +5,7 @@ and the fog processing layer.
 
 ## MQTT Architecture
 
+```
 ESP8266
    │
    │ Publish
@@ -17,6 +18,7 @@ Mosquitto MQTT Broker
    │ Subscribe
    ▼
 Node-RED
+```
 
 ## MQTT Broker
 
