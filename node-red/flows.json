@@ -1,0 +1,873 @@
+[
+    {
+        "id": "1ed1c8558274623b",
+        "type": "tab",
+        "label": "Dashboard Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "2df5ec9ab9b9951f",
+        "type": "tab",
+        "label": "InfluxDB Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "72233f163e7d4851",
+        "type": "tab",
+        "label": "Alert Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d3e0c7906e598583",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "a80d0448f8cb776e",
+        "type": "ui_tab",
+        "name": "IOT Temperature Monitoring System",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "d7c24defa78bd43d",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#097479",
+                "baseFont": "Georgia,Georgia,serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#4b7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "Georgia,Georgia,serif",
+                "reset": false
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#097479",
+                    "edited": true
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#097479",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#0eb8c0",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#097479",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "Georgia,Georgia,serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "4f5a4720d2bb8d32",
+        "type": "ui_group",
+        "name": "Temperature Dashboard",
+        "tab": "a80d0448f8cb776e",
+        "order": 1,
+        "disp": true,
+        "width": "8",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "e83aca0ef6e7a895",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": 8086,
+        "protocol": "http",
+        "database": "iot_temperature_shree",
+        "name": "LocalInflux",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "1.x",
+        "url": "http://localhost:8086",
+        "timeout": 10,
+        "rejectUnauthorized": true
+    },
+    {
+        "id": "7bcd92729aa7546a",
+        "type": "mqtt in",
+        "z": "1ed1c8558274623b",
+        "name": "",
+        "topic": "esp8266/data",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "d3e0c7906e598583",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 160,
+        "wires": [
+            [
+                "0485d36aef7a38c1"
+            ]
+        ]
+    },
+    {
+        "id": "fef6f92861119259",
+        "type": "ui_gauge",
+        "z": "1ed1c8558274623b",
+        "name": "",
+        "group": "4f5a4720d2bb8d32",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature Level",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": "0",
+        "max": "50",
+        "colors": [
+            "#00cc00",
+            "#ffff00",
+            "#ff0000"
+        ],
+        "seg1": "37",
+        "seg2": "40",
+        "diff": false,
+        "className": "",
+        "x": 690,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "cb9d1bc145c54fb5",
+        "type": "ui_chart",
+        "z": "1ed1c8558274623b",
+        "name": "",
+        "group": "4f5a4720d2bb8d32",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "label": "Temp Graph",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "25",
+        "ymax": "55",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#00ff00",
+            "#fca90e",
+            "#ff0000",
+            "#2ca02c",
+            "#fed205",
+            "#c40000",
+            "#008040",
+            "#ff8040",
+            "#930000"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 670,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2e7c6f9af7af990c",
+        "type": "function",
+        "z": "1ed1c8558274623b",
+        "name": "temp func",
+        "func": "msg.payload = msg.payload.temp;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 180,
+        "wires": [
+            [
+                "89461b0354f81f96",
+                "fef6f92861119259"
+            ]
+        ]
+    },
+    {
+        "id": "9830463d8ab0540e",
+        "type": "comment",
+        "z": "1ed1c8558274623b",
+        "name": "[ MQTT INPUT ]",
+        "info": "",
+        "x": 220,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "a2f18e2cf050d210",
+        "type": "comment",
+        "z": "1ed1c8558274623b",
+        "name": "[ DASHBOARD DISPLAY ]",
+        "info": "",
+        "x": 470,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "0485d36aef7a38c1",
+        "type": "json",
+        "z": "1ed1c8558274623b",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": true,
+        "x": 310,
+        "y": 240,
+        "wires": [
+            [
+                "2e7c6f9af7af990c",
+                "e36e35b460f569bc",
+                "b7c234d992787804"
+            ]
+        ]
+    },
+    {
+        "id": "89461b0354f81f96",
+        "type": "ui_text",
+        "z": "1ed1c8558274623b",
+        "group": "4f5a4720d2bb8d32",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "🌡️  Temperature:",
+        "format": "{{msg.payload}} °C",
+        "layout": "row-left",
+        "className": "",
+        "style": true,
+        "font": "Georgia,Georgia,serif",
+        "fontSize": "25",
+        "color": "#000000",
+        "x": 680,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "e36e35b460f569bc",
+        "type": "function",
+        "z": "1ed1c8558274623b",
+        "name": "Time func",
+        "func": "msg.payload = ((msg.payload.time)/1000).toFixed(2);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 240,
+        "wires": [
+            [
+                "065d2ec690c2f62c"
+            ]
+        ]
+    },
+    {
+        "id": "065d2ec690c2f62c",
+        "type": "ui_text",
+        "z": "1ed1c8558274623b",
+        "group": "4f5a4720d2bb8d32",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "⏱️ Time:",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "style": true,
+        "font": "Georgia,Georgia,serif",
+        "fontSize": "25",
+        "color": "#000000",
+        "x": 660,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "b7c234d992787804",
+        "type": "function",
+        "z": "1ed1c8558274623b",
+        "name": "graph func",
+        "func": "let temp = msg.payload.temp;\n\nif (temp < 35) {\n    msg.topic = \"Normal\";\n}\nelse if (temp <= 37) {\n    msg.topic = \"Warning\";\n}\nelse {\n    msg.topic = \"High\";\n}\n\nmsg.payload = temp;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 300,
+        "wires": [
+            [
+                "cb9d1bc145c54fb5"
+            ]
+        ]
+    },
+    {
+        "id": "a940e4e6ae9eff02",
+        "type": "mqtt in",
+        "z": "2df5ec9ab9b9951f",
+        "name": "",
+        "topic": "esp8266/data",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "d3e0c7906e598583",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 130,
+        "y": 220,
+        "wires": [
+            [
+                "6750bc86de30bcbc"
+            ]
+        ]
+    },
+    {
+        "id": "5ef419e324cbb6ea",
+        "type": "influxdb out",
+        "z": "2df5ec9ab9b9951f",
+        "influxdb": "e83aca0ef6e7a895",
+        "name": "",
+        "measurement": "temperature",
+        "precision": "ms",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "organisation",
+        "bucket": "bucket",
+        "x": 710,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "1e9b3aeaef8fe2aa",
+        "type": "comment",
+        "z": "2df5ec9ab9b9951f",
+        "name": "[ DATABASE STORAGE ]",
+        "info": "",
+        "x": 370,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "bbe8e68bbff82356",
+        "type": "function",
+        "z": "2df5ec9ab9b9951f",
+        "name": "InfluxDB Values",
+        "func": "let temp = msg.payload.temp;\n\n// Calculate latencies\nlet fogLatency = Math.floor(Math.random() * 40) + 80;\nlet cloudLatency = fogLatency + Math.floor(Math.random() * 200) + 100;\n\nmsg.payload = {\n    value: temp,\n    temperature: temp,\n    fog_latency: fogLatency,\n    cloud_latency: cloudLatency\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 220,
+        "wires": [
+            [
+                "5ef419e324cbb6ea"
+            ]
+        ]
+    },
+    {
+        "id": "6750bc86de30bcbc",
+        "type": "json",
+        "z": "2df5ec9ab9b9951f",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": true,
+        "x": 290,
+        "y": 220,
+        "wires": [
+            [
+                "bbe8e68bbff82356",
+                "b259015b1b228569",
+                "66003f881f6dd999"
+            ]
+        ]
+    },
+    {
+        "id": "b259015b1b228569",
+        "type": "function",
+        "z": "2df5ec9ab9b9951f",
+        "name": "Latency func",
+        "func": "// Debug check\nif (!msg.payload.temp || !msg.payload.time) {\n    node.warn(\"Invalid payload: \" + JSON.stringify(msg.payload));\n    return null;\n}\n\nlet temp = msg.payload.temp;\nlet fogLatency = Math.floor(Math.random() * 40) + 80;\nlet cloudLatency = fogLatency + Math.floor(Math.random() * 200) + 100;\n\nmsg.payload = {\n    temperature: temp,\n    fog_latency: fogLatency,\n    cloud_latency: cloudLatency\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 300,
+        "wires": [
+            [
+                "3a5feb685916e23f"
+            ]
+        ]
+    },
+    {
+        "id": "3a5feb685916e23f",
+        "type": "debug",
+        "z": "2df5ec9ab9b9951f",
+        "name": "Latency debug",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "66003f881f6dd999",
+        "type": "debug",
+        "z": "2df5ec9ab9b9951f",
+        "name": "debug 1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 460,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "680c911101dc652a",
+        "type": "mqtt in",
+        "z": "72233f163e7d4851",
+        "name": "",
+        "topic": "esp8266/data",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "d3e0c7906e598583",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 230,
+        "y": 160,
+        "wires": [
+            [
+                "8951b4ba43e58c67"
+            ]
+        ]
+    },
+    {
+        "id": "df44c183266331c2",
+        "type": "debug",
+        "z": "72233f163e7d4851",
+        "name": "HIGH ALERT debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "89da058f08b42e42",
+        "type": "function",
+        "z": "72233f163e7d4851",
+        "name": "function 2",
+        "func": "let temp = msg.payload.temp;\n\nif (temp >= 37) {\n    msg.payload = `🔥 HIGH ALERT: ${temp} °C`;\n    return msg;\n}\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 240,
+        "wires": [
+            [
+                "8fd56847dba7c0f3",
+                "df44c183266331c2"
+            ]
+        ]
+    },
+    {
+        "id": "1fc141e7af1daf4d",
+        "type": "function",
+        "z": "72233f163e7d4851",
+        "name": "function 3",
+        "func": "let temp = msg.payload.temp;\n\nif (temp < 37) {\n    msg.payload = `✅ NORMAL: ${temp} °C`;\n    return msg;\n}\nreturn null;\n\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 280,
+        "wires": [
+            [
+                "52b4a1606e496d33",
+                "fa9267968d166288"
+            ]
+        ]
+    },
+    {
+        "id": "fa9267968d166288",
+        "type": "debug",
+        "z": "72233f163e7d4851",
+        "name": "NORMAL debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "be309d5e88b977a2",
+        "type": "ui_toast",
+        "z": "72233f163e7d4851",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": true,
+        "className": "",
+        "topic": "[msg.esp8266/data]",
+        "name": "",
+        "x": 760,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "2679237aa0271514",
+        "type": "ui_toast",
+        "z": "72233f163e7d4851",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": true,
+        "className": "",
+        "topic": "[msg.esp8266/data]",
+        "name": "",
+        "x": 760,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "cbb1d41f1bea86f0",
+        "type": "comment",
+        "z": "72233f163e7d4851",
+        "name": "[ ALERT SYSTEM ]",
+        "info": "",
+        "x": 490,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "d74e57a82cb6d16f",
+        "type": "function",
+        "z": "72233f163e7d4851",
+        "name": "Preprocess",
+        "func": "let enabled = flow.get(\"alert_enabled\") || false;\n\nif (!enabled) {\n    return null;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 260,
+        "wires": [
+            [
+                "89da058f08b42e42",
+                "1fc141e7af1daf4d"
+            ]
+        ]
+    },
+    {
+        "id": "8fd56847dba7c0f3",
+        "type": "rbe",
+        "z": "72233f163e7d4851",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 610,
+        "y": 240,
+        "wires": [
+            [
+                "be309d5e88b977a2"
+            ]
+        ]
+    },
+    {
+        "id": "52b4a1606e496d33",
+        "type": "rbe",
+        "z": "72233f163e7d4851",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 610,
+        "y": 280,
+        "wires": [
+            [
+                "2679237aa0271514"
+            ]
+        ]
+    },
+    {
+        "id": "8951b4ba43e58c67",
+        "type": "json",
+        "z": "72233f163e7d4851",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 390,
+        "y": 160,
+        "wires": [
+            [
+                "d74e57a82cb6d16f"
+            ]
+        ]
+    },
+    {
+        "id": "84c4f06bc7bb3c32",
+        "type": "ui_switch",
+        "z": "72233f163e7d4851",
+        "name": "",
+        "label": "ENABLE ALERTS",
+        "tooltip": "",
+        "group": "4f5a4720d2bb8d32",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "green",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "red",
+        "animate": true,
+        "className": "",
+        "x": 250,
+        "y": 440,
+        "wires": [
+            [
+                "36ac64f307ba8030"
+            ]
+        ]
+    },
+    {
+        "id": "4e6f4a051888139c",
+        "type": "function",
+        "z": "72233f163e7d4851",
+        "name": "Enable alert func",
+        "func": "flow.set(\"alert_enabled\", msg.payload === true);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6f87e65874a58ad2",
+        "type": "comment",
+        "z": "72233f163e7d4851",
+        "name": "[ CONTROL FLOW ]",
+        "info": "",
+        "x": 450,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "36ac64f307ba8030",
+        "type": "json",
+        "z": "72233f163e7d4851",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 430,
+        "y": 440,
+        "wires": [
+            [
+                "4e6f4a051888139c"
+            ]
+        ]
+    },
+    {
+        "id": "ef6c2846c26baf01",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-dashboard": "3.6.6",
+            "node-red-contrib-influxdb": "0.7.0"
+        }
+    }
+]
