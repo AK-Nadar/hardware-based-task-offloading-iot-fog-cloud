@@ -15,10 +15,10 @@ The system stores temperature measurements and latency-related data in InfluxDB 
 - Measurement: `temperature`
 
 ## Data Flow
-
+```
 ESP8266
 ↓
-MQTT Topic: `esp8266/data`
+MQTT Topic: esp8266/data
 ↓
 Mosquitto MQTT Broker
 ↓
@@ -27,7 +27,7 @@ Node-RED
 InfluxDB
 ↓
 Grafana
-
+```
 ## Stored Data
 
 The Node-RED flow prepares the following values for storage:
