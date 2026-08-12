@@ -54,7 +54,7 @@ Node-RED subscribes to the same MQTT topic and processes the incoming data at th
 
 The MQTT messages can be monitored using:
 ```bash
-*mosquitto_sub -h localhost -t esp8266/data -v*
+mosquitto_sub -h localhost -t esp8266/data -v
 
 Example output:
 
