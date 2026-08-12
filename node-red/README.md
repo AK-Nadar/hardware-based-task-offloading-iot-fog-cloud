@@ -7,7 +7,7 @@ Node-RED is used as the fog processing layer in the IoT-Fog-Cloud architecture.
 The Node-RED flow receives temperature data from the ESP8266 through MQTT and performs fog-level processing.
 
 ## Processing Flow
-```
+
 ESP8266
 ↓
 MQTT Topic: `esp8266/data`
@@ -21,7 +21,7 @@ Threshold Processing
 Alert Generation / Dashboard
 ↓
 InfluxDB
-```
+
 ## Main Functions
 
 - Receive temperature data through MQTT
